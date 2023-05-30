@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Beranda"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_24"/>
+    <item android:title="Rekomendasi"
+        android:id="@+id/rekomenFragment"
+        android:icon="@drawable/ic_recommend_24"/>
+    <item android:title="favorite"
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_favorite_24"/>
+    <item android:title="Akun"
+        android:id="@+id/akunFragment"
+        android:icon="@drawable/ic_account_circle_24"/>
+</menu>
