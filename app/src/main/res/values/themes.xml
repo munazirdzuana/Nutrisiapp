@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Nutrisiapp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/hijom</item>
-        <item name="colorPrimaryVariant">@color/oren</item>
+        <item name="colorPrimary">@color/lblue_600</item>
+        <item name="colorPrimaryVariant">@color/lblue_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

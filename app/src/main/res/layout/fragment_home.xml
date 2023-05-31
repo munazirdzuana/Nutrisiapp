@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/netral"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -15,7 +16,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/bk"
+            app:contentScrim="@color/netral"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/app_name">
 
@@ -32,8 +33,11 @@
                     android:id="@+id/well"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/poppinsr_regular"
                     android:text="@string/welcome"
                     android:textColor="@color/white"
@@ -47,7 +51,7 @@
                     android:layout_margin="8dp"
                     android:layout_below="@id/well"
                     android:layout_marginHorizontal="16dp"
-                    app:cardBackgroundColor="@color/bk"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="30dp"
                     app:cardElevation="10dp">
 
@@ -60,10 +64,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
+                            android:layout_marginEnd="147dp"
                             android:padding="16dp"
                             android:text="Budget :"
                             android:textColor="@color/black"
                             android:textSize="24sp"
+                            app:layout_constraintEnd_toStartOf="@+id/textView2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,46 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/oren"
+    app:cardBackgroundColor="@color/white"
     android:layout_gravity="center"
     app:cardCornerRadius="20dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:layout_margin="8dp">
 
         <TextView
             android:id="@+id/makanan"
+            style="@style/bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imgmakan"
             android:text="Daging"
-            android:textSize="32sp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/harga"
+            android:id="@+id/tv_rp"
+            style="@style/light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Harga"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/makanan"/>
+            android:layout_toEndOf="@id/imgmakan"
+            android:layout_below="@id/makanan"
+            android:layout_marginStart="16dp"
+            android:text="@string/rp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imgmakan"
+            app:layout_constraintTop_toBottomOf="@id/makanan" />
+
+        <TextView
+            android:id="@+id/tv_harga"
+            style="@style/regular"
+            android:layout_toEndOf="@id/tv_rp"
+            android:layout_below="@id/makanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="20.000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_rp"
+            app:layout_constraintTop_toBottomOf="@+id/makanan" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_rp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imgmakan"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            app:layout_constraintStart_toEndOf="@+id/imgmakan"
+            app:layout_constraintTop_toBottomOf="@+id/tv_harga"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/rating" />
 
         <ImageView
             android:id="@+id/imgmakan"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_centerVertical="true"
             android:src="@drawable/doge"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

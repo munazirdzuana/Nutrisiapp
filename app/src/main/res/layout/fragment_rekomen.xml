@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/bk"
+    android:background="@color/netral"
     android:paddingHorizontal="8dp"
     tools:context=".ui.rekomendMakan.rekomenFragment">
 
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardBackgroundColor="@color/oren"
+        app:cardBackgroundColor="@color/white"
         android:layout_gravity="center"
         app:cardCornerRadius="20dp">
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="Daging"
                 android:textSize="32sp"
-                android:textColor="@color/white"
+                style="@style/regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="Harga"
                 android:textSize="24sp"
-                android:textColor="@color/white"
+                style="@style/regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/makanan"/>
 
