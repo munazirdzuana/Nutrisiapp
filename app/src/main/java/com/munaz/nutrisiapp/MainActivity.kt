@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.munaz.nutrisiapp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +20,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-        navController=navHostFragment.navController
-        val bottomNavigationView =findViewById<BottomNavigationView>(R.id.bottomNav)
-        setupWithNavController(bottomNavigationView, navController  )
+        val navController=navHostFragment.navController
+        navController.navigate(R.id.splasFragment)
+        val bottomNavigationView :BottomNavigationView=findViewById(R.id.bottomNav)
+        bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {

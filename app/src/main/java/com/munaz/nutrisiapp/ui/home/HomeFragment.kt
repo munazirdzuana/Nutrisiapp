@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showRecyclerList() {
-        rvAtic.layoutManager = LinearLayoutManager(requireContext())
+        rvAtic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val listNetAdapter = RvAdapter(list)
         rvAtic.adapter = listNetAdapter
         listNetAdapter.setOnItemClickCallback(object : RvAdapter.OnItemClickCallback {
@@ -42,16 +42,13 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun showSelectedHero(data: Model) {
-
-    }
 
     private fun getList(): ArrayList<Model> {
         val dataTitle=resources.getStringArray(R.array.data_title)
         val dataRating=resources.getStringArray(R.array.data_desc)
         val dataList=ArrayList<Model>()
         for (i in dataTitle.indices){
-            val net=Model(dataTitle[i], dataRating[i])
+            val net=Model(dataTitle[i])
             dataList.add(net)
         }
         return dataList

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Beranda"
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home_24"/>
+        android:icon="@drawable/ic_home_24" />
     <item android:title="Rekomendasi"
         android:id="@+id/rekomenFragment"
         android:icon="@drawable/ic_recommend_24"/>

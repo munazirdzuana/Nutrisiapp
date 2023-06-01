@@ -16,7 +16,6 @@ class RvAdapter (private val netv:ArrayList<com.munaz.nutrisiapp.Model>) : Recyc
     }
 
     class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvRating: TextView =itemView.findViewById(R.id.tv_description)
         val tvTitle: TextView =itemView.findViewById(R.id.tv_judul)
     }
 
@@ -25,8 +24,7 @@ class RvAdapter (private val netv:ArrayList<com.munaz.nutrisiapp.Model>) : Recyc
     }
 
     override fun onBindViewHolder(holder: RvAdapter.ListViewHolder, position: Int) {
-        val (title, rating) = netv[position]
-        holder.tvRating.text = rating
+        val (title) = netv[position]
         holder.tvTitle.text = title
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(netv[holder.adapterPosition]) }
     }

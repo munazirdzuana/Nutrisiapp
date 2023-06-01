@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgrap"
-    app:startDestination="@id/splasFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/splasFragment"
@@ -14,7 +14,7 @@
             android:id="@+id/action_splasFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splasFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -50,11 +50,7 @@
         android:id="@+id/homeFragment"
         android:name="com.munaz.nutrisiapp.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_rekomenFragment"
-            app:destination="@id/rekomenFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/rekomenFragment"
         android:name="com.munaz.nutrisiapp.ui.rekomendMakan.rekomenFragment"
@@ -64,10 +60,10 @@
         android:id="@+id/favoriteFragment"
         android:name="com.munaz.nutrisiapp.ui.favMakanan.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite"/>
     <fragment
         android:id="@+id/akunFragment"
         android:name="com.munaz.nutrisiapp.ui.akun.AkunFragment"
         android:label="fragment_akun"
-        tools:layout="@layout/fragment_akun" />
+        tools:layout="@layout/fragment_akun"/>
 </navigation>
