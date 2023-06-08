@@ -50,20 +50,42 @@
         android:id="@+id/homeFragment"
         android:name="com.munaz.nutrisiapp.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
     <fragment
         android:id="@+id/rekomenFragment"
         android:name="com.munaz.nutrisiapp.ui.rekomendMakan.rekomenFragment"
         android:label="fragment_rekomen"
-        tools:layout="@layout/fragment_rekomen" />
+        tools:layout="@layout/fragment_rekomen" >
+        <action
+            android:id="@+id/action_rekomenFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.munaz.nutrisiapp.ui.favMakanan.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite"/>
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/akunFragment"
         android:name="com.munaz.nutrisiapp.ui.akun.AkunFragment"
         android:label="fragment_akun"
         tools:layout="@layout/fragment_akun"/>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.munaz.nutrisiapp.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.munaz.nutrisiapp.ui.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 </navigation>

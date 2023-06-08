@@ -24,7 +24,7 @@ class RvAdapter (private val netv:ArrayList<com.munaz.nutrisiapp.Model>) : Recyc
     }
 
     override fun onBindViewHolder(holder: RvAdapter.ListViewHolder, position: Int) {
-        val (title) = netv[position]
+        val (title,desc) = netv[position]
         holder.tvTitle.text = title
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(netv[holder.adapterPosition]) }
     }

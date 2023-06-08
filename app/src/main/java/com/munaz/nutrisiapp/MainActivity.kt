@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 else -> hideBottomNav()
             }
         }
+
     }
 
     private fun hideBottomNav() {

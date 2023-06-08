@@ -16,9 +16,27 @@
     <string name="welcome">Welcome,</string>
     <string name="title_article">cara apa we kamumah kepoan orangyate ih</string>
     <string name="rating">Families and cultures clash when two LA millennials from different backgrounds fall in love and face the ultimate relationship test: meeting the parents</string>
-    <string name="artikel">ARTIKEL</string>
+    <string name="artikel">Artikel</string>
     <string name="makan_pagi">Makan Pagi</string>
     <string name="rp">Rp.</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="nama_lengkap">Nama lengkap</string>
+    <string name="ipsum">Sorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. Morbi a eleifend magna. Nam metus lacus, porttitor eu mauris a, blandit ultrices nibh. Mauris sit amet magna non ligula vestibulum eleifend. Nulla varius volutpat turpis sed lacinia.</string>
+    <string name="_20">\'20</string>
+    <string name="back_button">Back button</string>
+    <string name="upload_gambar">Upload Gambar</string>
+    <string name="preview_picture">preview picture</string>
+    <string name="camera">Camera</string>
+    <string name="galeri">Galeri</string>
+    <string name="scan_gambar">Scan Gambar</string>
+    <string name="back">Back</string>
+    <string name="detail_makanan">Detail Makanan</string>
+    <string name="like_button">Like</string>
+    <string name="food_image">food image</string>
+    <string name="favorite_makanan">Favorite Makanan</string>
+    <string name="scan_makanan">Scan Makanan</string>
+    <string name="resep">Resep</string>
 
 
     <string-array name="data_title">

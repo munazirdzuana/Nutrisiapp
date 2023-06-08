@@ -50,4 +50,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
+
+
 }

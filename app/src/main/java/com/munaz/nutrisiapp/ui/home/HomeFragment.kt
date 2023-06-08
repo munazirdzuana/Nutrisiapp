@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.munaz.nutrisiapp.Model
@@ -16,6 +17,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding!!
     private lateinit var rvAtic: RecyclerView
+    private lateinit var rvResep: RecyclerView
     private val list = ArrayList<Model>()
 
     override fun onCreateView(
@@ -25,13 +27,29 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        rvAtic = binding.rvHome
+        rvAtic = binding.rvArtikel
+        rvResep=binding.rvResep
         list.addAll(getList())
-        showRecyclerList()
+        showArtikelList()
+        showResepList()
+        binding.btScan.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_cameraFragment)
+        }
         return binding.root
     }
 
-    private fun showRecyclerList() {
+    private fun showResepList() {
+        rvResep.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val listNetAdapter = RvAdapter(list)
+        rvResep.adapter = listNetAdapter
+        listNetAdapter.setOnItemClickCallback(object : RvAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Model) {
+                Toast.makeText(requireContext(), "Kamu memilih " + data.title, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun showArtikelList() {
         rvAtic.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val listNetAdapter = RvAdapter(list)
         rvAtic.adapter = listNetAdapter
@@ -45,13 +63,18 @@ class HomeFragment : Fragment() {
 
     private fun getList(): ArrayList<Model> {
         val dataTitle=resources.getStringArray(R.array.data_title)
-        val dataRating=resources.getStringArray(R.array.data_desc)
+        val datadesc=resources.getStringArray(R.array.data_desc)
         val dataList=ArrayList<Model>()
         for (i in dataTitle.indices){
-            val net=Model(dataTitle[i])
+            val net=Model(dataTitle[i],datadesc[i])
             dataList.add(net)
         }
         return dataList
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
     }
 
     companion object {
