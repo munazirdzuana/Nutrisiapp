@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.isidata.RiwayatFragment">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical" >
+        <TextView
+            style="@style/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_userdata"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/tvAllergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:drawablePadding="8dp"
+            android:text="@string/allergies"
+            android:minHeight="32dp"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <Spinner
+            android:id="@+id/type_allergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            tools:listitem="@android:layout/simple_spinner_item"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:entries="@array/type_allergy"/>
+
+        <TextView
+            android:id="@+id/tvDisease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:drawablePadding="8dp"
+            android:text="@string/disease"
+            android:minHeight="32dp"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <Spinner
+            android:id="@+id/type_disease"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            tools:listitem="@android:layout/simple_spinner_item"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:entries="@array/type_disease"/>
+
+        <TextView
+            android:id="@+id/tvStress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:drawablePadding="8dp"
+            android:text="@string/stress"
+            android:minHeight="32dp"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <Spinner
+            android:id="@+id/type_stress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            tools:listitem="@android:layout/simple_spinner_item"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:entries="@array/type_stress"/>
+
+        <TextView
+            android:id="@+id/tvActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:drawablePadding="8dp"
+            android:text="@string/activities"
+            android:minHeight="32dp"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <Spinner
+            android:id="@+id/type_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            tools:listitem="@android:layout/simple_spinner_item"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:entries="@array/type_activity"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end">
+
+        <TextView
+            android:id="@+id/submit"
+            style="@style/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:drawableEnd="@drawable/ic_arrow_forward"
+            android:drawablePadding="8dp"
+            android:gravity="fill|right|bottom"
+            android:padding="8dp"
+            android:text="@string/submit"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:clickable="true" />
+    </LinearLayout>
+
+</LinearLayout>

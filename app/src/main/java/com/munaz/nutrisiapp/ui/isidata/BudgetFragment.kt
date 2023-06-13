@@ -1,4 +1,4 @@
-package com.munaz.nutrisiapp.ui.register
+package com.munaz.nutrisiapp.ui.isidata
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,24 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.munaz.nutrisiapp.R
-import com.munaz.nutrisiapp.databinding.FragmentRegisterBinding
+import com.munaz.nutrisiapp.databinding.FragmentBudgetBinding
 
-
-class RegisterFragment : Fragment() {
-    private var _binding :FragmentRegisterBinding? =null
+class BudgetFragment : Fragment() {
+    private var _binding : FragmentBudgetBinding? =null
     private val binding get()=_binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        _binding = FragmentBudgetBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.toLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
-        binding.creAkun.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_identitasFragment)
+        binding.next.setOnClickListener{
+            findNavController().navigate(R.id.action_budgetFragment_to_riwayatFragment)
         }
         return view
     }

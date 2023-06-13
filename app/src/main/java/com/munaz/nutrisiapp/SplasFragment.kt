@@ -18,7 +18,7 @@ class SplasFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_splas, container, false)
         Handler(Looper.myLooper()!!).postDelayed({
-            findNavController().navigate(R.id.action_splasFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_splasFragment_to_welcomeFragment)
         },3000)
         return view
     }
