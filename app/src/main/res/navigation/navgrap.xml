@@ -64,7 +64,9 @@
             app:destination="@id/cameraFragment" />
         <action
             android:id="@+id/action_homeFragment_to_detailArikel_Fragment"
-            app:destination="@id/detailArikel_Fragment" />
+            app:destination="@id/detailArikel_Fragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/rekomenFragment"
@@ -143,10 +145,22 @@
         android:id="@+id/cameraFragment"
         android:name="com.munaz.nutrisiapp.ui.camera.CameraFragment"
         android:label="fragment_camera"
-        tools:layout="@layout/fragment_camera" />
+        tools:layout="@layout/fragment_camera" >
+        <action
+            android:id="@+id/action_cameraFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/resultFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailArikel_Fragment"
         android:name="com.munaz.nutrisiapp.ui.detail.detailArikel_Fragment"
         android:label="fragment_detail_arikel_"
         tools:layout="@layout/fragment_detail_arikel_" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.munaz.nutrisiapp.ui.camera.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
 </navigation>

@@ -68,7 +68,9 @@ class RegisterFragment : Fragment() {
     private fun handleResponse(status: Resource<LoginResponse>) {
         when (status) {
             is Resource.Loading -> showLoadingView()
-            is Resource.Success -> status.data?.let { showAlert(recipes = it) }
+            is Resource.Success -> status.data?.let {
+                viewModel.doSaveToken()
+                showAlert(recipes = it) }
             is Resource.DataError -> {
                 status.errorCode?.let { viewModel.showErrMessage(it) }
             }

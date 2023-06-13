@@ -13,6 +13,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.munaz.nutrisiapp.R
+import com.munaz.nutrisiapp.ui.register.VMRegist
+import retrofit2.http.Tag
 import android.content.ContentValues.TAG
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -27,12 +29,12 @@ class SplasFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_splas, container, false)
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                requireActivity().finish()
+                findNavController().popBackStack()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
         viewModel = ViewModelProvider(requireActivity())[VMss::class.java]
-        viewModel.token.observe(viewLifecycleOwner) {
+        viewModel.token.observe(viewLifecycleOwner, Observer {
             val token = runBlocking { it.first() }
             if (token==null){
                 findNavController().navigate(R.id.action_splasFragment_to_welcomeFragment)
@@ -41,7 +43,7 @@ class SplasFragment : Fragment() {
                 Log.d(TAG, "token $it")
                 findNavController().navigate(R.id.action_splasFragment_to_homeFragment)
             }
-        }
+        })
         Handler(Looper.myLooper()!!).postDelayed({viewModel.doGetToken()},3000)
         return view
     }

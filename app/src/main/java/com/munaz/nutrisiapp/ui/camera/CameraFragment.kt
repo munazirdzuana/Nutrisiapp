@@ -2,10 +2,8 @@ package com.munaz.nutrisiapp.ui.camera
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
-import android.app.Application
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -17,9 +15,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.munaz.nutrisiapp.R
+import com.munaz.nutrisiapp.data.Resource
+import com.munaz.nutrisiapp.data.response.ImageResponse
 import com.munaz.nutrisiapp.databinding.FragmentCameraBinding
+import com.munaz.nutrisiapp.ui.home.HomeFragment
 import com.munaz.nutrisiapp.utils.createCustomTempFile
 import com.munaz.nutrisiapp.utils.uriToFile
 import com.vmadalin.easypermissions.EasyPermissions
@@ -31,14 +35,16 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private val binding get() = _binding!!
 
     private var getFile: File? = null
-    lateinit var currentPhotoPath :String
+    private lateinit var viewModel: VMcam
+    lateinit var currentPhotoPath: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCameraBinding.inflate(inflater, container, false)
-        requestLocationPermission()
+        viewModel = ViewModelProvider(requireActivity())[VMcam::class.java]
+        permission()
         if (!hasCamPermission()) {
             Toast.makeText(
                 requireContext(),
@@ -47,13 +53,23 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             ).show()
             findNavController().popBackStack()
         }
-        binding.backButton2.setOnClickListener {
-            findNavController().popBackStack()
+        viewModel.responScan.observe(viewLifecycleOwner) {
+            hadleScanCam(it)
         }
+        binding.backButton2.setOnClickListener { findNavController().popBackStack() }
+        binding.btScan.setOnClickListener {
+            if (getFile != null) {
+                viewModel.doImage(getFile!!)
+            } else {
+                Toast.makeText(requireContext(),"Masukan Gambar", Toast.LENGTH_LONG).show()
+            }
+        }
+
+
 
         binding.btCam.setOnClickListener {
             val intentCam = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            if (intentCam.resolveActivity(requireActivity().packageManager)!=null) {
+            if (intentCam.resolveActivity(requireActivity().packageManager) != null) {
                 val photoFile: File = createCustomTempFile(requireContext().applicationContext)
                 val photoURI: Uri = FileProvider.getUriForFile(
                     requireContext(),
@@ -66,14 +82,38 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }
         }
         binding.btGaleri.setOnClickListener {
-            val intentGaleri=Intent()
-            intentGaleri.action=ACTION_GET_CONTENT
-            intentGaleri.type="image/*"
-            val choosed=Intent.createChooser(intentGaleri,"pilih foto")
+            val intentGaleri = Intent()
+            intentGaleri.action = ACTION_GET_CONTENT
+            intentGaleri.type = "image/*"
+            val choosed = Intent.createChooser(intentGaleri, "pilih foto")
             launcherIntentGallery.launch(choosed)
         }
 
         return binding.root
+    }
+    private fun showLoadingView() {
+        binding.progressBar4.visibility=View.VISIBLE
+    }
+    private fun showResult() {
+        binding.progressBar4.visibility=View.GONE
+    }
+
+    private fun hadleScanCam(it: Resource<ImageResponse>) {
+        when (it) {
+            is Resource.Loading -> showLoadingView()
+            is Resource.Success -> {
+                it.data?.let {
+                    val img=it.data.imageUrl
+                    val titel=it.data.predict
+                    val bundle = bundleOf(HomeFragment.IMG to img, HomeFragment.ARTIKEL to titel)
+                    findNavController().navigate(R.id.action_cameraFragment_to_resultFragment, bundle)
+                }
+            }
+            is Resource.DataError -> {
+                showResult()
+                Toast.makeText(requireContext(),"error network", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun hasCamPermission() =
@@ -83,7 +123,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             Manifest.permission.CAMERA
         )
 
-    private fun requestLocationPermission() {
+    private fun permission() {
         EasyPermissions.requestPermissions(
             this,
             "This application cannot work without Location Permission.",
@@ -97,7 +137,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
         } else {
-            requestLocationPermission()
+            permission()
         }
     }
 
@@ -121,9 +161,9 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
-            val file=File(currentPhotoPath)
+            val file = File(currentPhotoPath)
             file.let {
-                getFile=it
+                getFile = it
                 binding.prevImg.setImageBitmap(BitmapFactory.decodeFile(it.path))
             }
         }
@@ -136,7 +176,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, requireContext())
-                getFile=myFile
+                getFile = myFile
                 binding.prevImg.setImageURI(uri)
             }
         }

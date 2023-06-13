@@ -102,7 +102,7 @@
         <item>Stres sedang</item>
         <item>Stres ringan</item>
     </string-array>
-    
+
     <string-array name="type_activity">
         <item>Kerja ringan</item>
         <item>Kerja ringan-sedang</item>

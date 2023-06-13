@@ -30,6 +30,9 @@ class VMRegist @Inject constructor(
     private val _showErr = MutableLiveData<String>()
     val showErr: LiveData<String> get() = _showErr
 
+    private val _savetoken = MutableLiveData<Resource<Boolean>>()
+    val savtoken: LiveData<Resource<Boolean>> get() = _savetoken
+
     fun doregis(regisReq: RegisReq) {
         val isEmailValid = isValidEmail(regisReq.email)
         val isPassWordValid =
@@ -55,5 +58,18 @@ class VMRegist @Inject constructor(
         val error = errorManager.getError(errorCode)
         Log.d(TAG, error.description)
         _showErr.value = error.description
+    }
+    fun doSaveToken() {
+        viewModelScope.launch {
+            _savetoken.value = Resource.Loading()
+            _response.value?.data?.token.let { s ->
+                if (s != null) {
+                    dataRepository.saveToken(s).collect {
+                        _savetoken.value = it
+                    }
+                }
+            }
+
+        }
     }
 }
