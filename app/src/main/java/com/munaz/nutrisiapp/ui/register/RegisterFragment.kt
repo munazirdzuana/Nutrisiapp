@@ -82,7 +82,7 @@ class RegisterFragment : Fragment() {
             setMessage(recipes.message)
             setPositiveButton("Lanjut") { dialog, _ ->
                 dialog.dismiss()
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_registerFragment_to_identitasFragment)
             }
             create()
             show()

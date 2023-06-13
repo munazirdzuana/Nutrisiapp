@@ -24,7 +24,7 @@
             style="@style/medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/registrasi"
+            android:text="@string/registration"
             android:textSize="35sp" />
 
         <TextView
