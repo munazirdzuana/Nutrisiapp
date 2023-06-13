@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splasFragment"
-        android:name="com.munaz.nutrisiapp.SplasFragment"
+        android:name="com.munaz.nutrisiapp.ui.SplasFragment"
         android:label="fragment_splas"
         tools:layout="@layout/fragment_splas" >
         <action
@@ -15,10 +15,15 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/splasFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splasFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splasFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.munaz.nutrisiapp.ui.login.loginFragment"
+        android:name="com.munaz.nutrisiapp.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -54,6 +59,9 @@
         <action
             android:id="@+id/action_homeFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailArikel_Fragment"
+            app:destination="@id/detailArikel_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/rekomenFragment"
@@ -62,7 +70,9 @@
         tools:layout="@layout/fragment_rekomen" >
         <action
             android:id="@+id/action_rekomenFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -88,4 +98,9 @@
         android:name="com.munaz.nutrisiapp.ui.camera.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/detailArikel_Fragment"
+        android:name="com.munaz.nutrisiapp.ui.detail.detailArikel_Fragment"
+        android:label="fragment_detail_arikel_"
+        tools:layout="@layout/fragment_detail_arikel_" />
 </navigation>

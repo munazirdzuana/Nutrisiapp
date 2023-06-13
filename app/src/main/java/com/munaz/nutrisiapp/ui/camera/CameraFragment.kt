@@ -30,6 +30,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
 
+    private var getFile: File? = null
     lateinit var currentPhotoPath :String
 
     override fun onCreateView(
@@ -122,7 +123,8 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         if (result.resultCode == RESULT_OK) {
             val file=File(currentPhotoPath)
             file.let {
-                binding.prevImg.setImageBitmap(BitmapFactory.decodeFile(file.path))
+                getFile=it
+                binding.prevImg.setImageBitmap(BitmapFactory.decodeFile(it.path))
             }
         }
     }
@@ -134,6 +136,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, requireContext())
+                getFile=myFile
                 binding.prevImg.setImageURI(uri)
             }
         }

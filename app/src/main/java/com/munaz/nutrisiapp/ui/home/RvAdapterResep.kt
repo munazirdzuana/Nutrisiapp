@@ -7,9 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.munaz.nutrisiapp.R
-import com.munaz.nutrisiapp.data.response.DataItem
+import com.munaz.nutrisiapp.data.response.FoodRecipeItem
+import com.munaz.nutrisiapp.data.response.FoodsItem
 
-class RvAdapter (private val List:List<DataItem>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+class RvAdapterResep (private val List:List<FoodsItem>) : RecyclerView.Adapter<RvAdapterResep.ViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =
@@ -22,12 +23,12 @@ class RvAdapter (private val List:List<DataItem>) : RecyclerView.Adapter<RvAdapt
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: DataItem)
+        fun onItemClicked(data: FoodsItem)
     }
 
-    override fun onBindViewHolder(holder: RvAdapter.ViewHolder, position: Int) {
-        holder.tvItem.text = List[position].title
-        Glide.with(holder.itemView).load(List[position].image)
+    override fun onBindViewHolder(holder: RvAdapterResep.ViewHolder, position: Int) {
+        holder.tvItem.text = List[position].foodRecipe[0].name
+        Glide.with(holder.itemView).load(List[position].foodRecipe[0].image)
             .into(holder.itemView.findViewById(R.id.img_item))
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(List[holder.adapterPosition]) }
     }

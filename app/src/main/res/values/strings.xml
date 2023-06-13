@@ -37,6 +37,13 @@
     <string name="favorite_makanan">Favorite Makanan</string>
     <string name="scan_makanan">Scan Makanan</string>
     <string name="resep">Resep</string>
+    <string name="no_internet">No Internet</string>
+    <string name="network_error">network error</string>
+    <string name="invalid_password">invalid password</string>
+    <string name="invalid_email">invalid Email</string>
+    <string name="invalid_email_and_password">invalid Email and Password</string>
+    <string name="detail_artikel">Detail Artikel</string>
+    <string name="hi">Hi,</string>
 
 
     <string-array name="data_title">
