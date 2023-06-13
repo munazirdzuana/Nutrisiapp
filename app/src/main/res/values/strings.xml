@@ -2,6 +2,14 @@
     <string name="app_name">Nutrisiapp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Welcoming Page-->
+    <string name="wel">Welcome</string>
+    <string name="wel1">kami dapat membantu anda untuk memperbaiki kebiasaan anda</string>
+    <string name="wel2">kami memberikan rekomendasi makanan yang dibutuhkan oleh tubuh anda</string>
+    <string name="wel3">kami akan membantu anda dalam hidup sehat, segera bergabung</string>
+
+    <!--    Login and Register-->
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="Lgoogle">Login dengan google</string>
@@ -10,9 +18,27 @@
     <string name="caccount">Create an account</string>
     <string name="upassword">Ulangi password</string>
     <string name="buat_akun">buat akun</string>
-    <string name="registrasi">Registrasi</string>
+    <string name="registration">Registrasi</string>
     <string name="spa"><u>Sudah Punya Akun?</u></string>
     <string name="email">Email</string>
+
+    <!--    User Data-->
+    <string name="title_userdata">Data User</string>
+    <string name="title_budget">Berapa budget yang kamu butuhkan?</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="birthday">Tanggal Lahir</string>
+    <string name="age">Usia</string>
+    <string name="weight">Berat Badan</string>
+    <string name="height">Tinggi Badan</string>
+    <string name="budget">Contoh: 50000</string>
+    <string name="allergies">Alergi:</string>
+    <string name="disease">Riwayat Penyakit</string>
+    <string name="stress">Stress</string>
+    <string name="activities">Aktivitas</string>
+    <string name="next">Next Step</string>
+    <string name="submit">Submit</string>
+
+    <!--    Home-->
     <string name="welcome">Welcome,</string>
     <string name="title_article">cara apa we kamumah kepoan orangyate ih</string>
     <string name="rating">Families and cultures clash when two LA millennials from different backgrounds fall in love and face the ultimate relationship test: meeting the parents</string>
@@ -45,6 +71,45 @@
     <string name="detail_artikel">Detail Artikel</string>
     <string name="hi">Hi,</string>
 
+    <string-array name="type_gender">
+        <item>Laki-laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string-array name="type_allergy">
+        <item>Kacang</item>
+        <item>Udang</item>
+        <item>Seafood</item>
+    </string-array>
+
+    <string-array name="type_disease">
+        <item>Diabetes</item>
+        <item>Hipertensión</item>'
+        <item>Cáncer</item>
+        <item>Enfermedad cardiovascular</item>
+        <item>Enfermedad pulmonar</item>
+        <item>Enfermedad renal</item>
+        <item>Enfermedad hepática</item>
+        <item>Enfermedad neurológica</item>
+        <item>Enfermedad hematológica</item>
+        <item>Maag</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="type_stress">
+        <item>Stres sangat berat</item>
+        <item>Stres berat</item>
+        <item>Stres sedang</item>
+        <item>Stres ringan</item>
+    </string-array>
+    
+    <string-array name="type_activity">
+        <item>Kerja ringan</item>
+        <item>Kerja ringan-sedang</item>
+        <item>Kerja sedang</item>
+        <item>Kerja berat</item>
+        <item>Kerja berat sekali</item>
+    </string-array>
 
     <string-array name="data_title">
         <item>You People</item>

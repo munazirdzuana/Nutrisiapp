@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.isidata.IdentitasFragment">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_userdata"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/rounded"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="8dp"
+            android:hint="@string/weight"
+            android:minHeight="32dp"
+            android:padding="8dp"
+            android:text="@string/gender"
+            android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/type_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="16dp"
+                android:entries="@array/type_gender"
+                android:minHeight="48dp"
+                android:padding="8dp"
+                tools:listitem="@android:layout/simple_spinner_item" />
+
+        <TextView
+            android:id="@+id/selectDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="8dp"
+            android:minHeight="32dp"
+            android:padding="8dp"
+            android:text="@string/birthday"
+            android:textSize="18sp" />
+<!--            android:onClick="selectDate"-->
+
+        <Button
+            android:id="@+id/calcuAge"
+            android:text="@string/age"
+            android:textSize="15sp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/showAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded"
+            android:text="@string/age"
+            android:textSize="18sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="10dp"
+            android:visibility="gone"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Weight"
+            android:background="@drawable/rounded"
+            android:drawableStart="@drawable/ic_weight"
+            android:drawablePadding="8dp"
+            android:hint="@string/weight"
+            android:inputType="text|numberDecimal"
+            android:minHeight="48dp"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Height"
+            android:background="@drawable/rounded"
+            android:drawableStart="@drawable/ic_height"
+            android:drawablePadding="8dp"
+            android:hint="@string/height"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end">
+        <TextView
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            style="@style/medium"
+            android:textSize="16sp"
+            android:textColor="#212121"
+            android:padding="8dp"
+            android:drawablePadding="8dp"
+            android:drawableEnd="@drawable/ic_arrow_forward"
+            android:text="@string/next"
+            android:clickable="true"
+            android:gravity="fill|right|bottom" />
+    </LinearLayout>
+
+</LinearLayout>
