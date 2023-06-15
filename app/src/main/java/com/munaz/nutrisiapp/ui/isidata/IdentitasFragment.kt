@@ -45,8 +45,10 @@ class IdentitasFragment : Fragment() {
     fun HandleBUndle() {
         val nama =arguments?.getString(NAMEE) ?:""
         val email =arguments?.getString(EMAILL) ?:""
-        val berat :Int = binding.etWeight.toString().toInt()
-        val tinggi =binding.etWeight.toString().toInt()
+        val sberat  = binding.etWeight.text.toString()
+        val berat =sberat.toInt()
+        val stinggi =binding.etWeight.text.toString()
+        val tinggi =stinggi.toInt()
         val jenisK=inputData()
         val umur = hitungUmur(lahir)
         val bundle =

@@ -82,7 +82,7 @@ class rekomenFragment : Fragment() {
             .load(snacksiang.image)
             .centerCrop()
             .placeholder(R.drawable.doge)
-            .into(binding.ivFood1);
+            .into(binding.ivFood5);
         binding.tvmakanan5.text=snacksiang.name
         binding.tvHarga5.text=snacksiang.price.toString()
         binding.tv2Kalori5.text=snacksiang.calories.toString()
@@ -97,7 +97,7 @@ class rekomenFragment : Fragment() {
             .load(snackpagi.image)
             .centerCrop()
             .placeholder(R.drawable.doge)
-            .into(binding.ivFood1);
+            .into(binding.ivFood4);
         binding.tvmakanan4.text=snackpagi.name
         binding.tvHarga4.text=snackpagi.price.toString()
         binding.tv2Kalori4.text=snackpagi.calories.toString()
@@ -112,7 +112,7 @@ class rekomenFragment : Fragment() {
             .load(dinner.image)
             .centerCrop()
             .placeholder(R.drawable.doge)
-            .into(binding.ivFood1);
+            .into(binding.ivFood3);
         binding.tvmakanan3.text=dinner.name
         binding.tvHarga3.text=dinner.price.toString()
         binding.tv2Kalori3.text=dinner.calories.toString()
@@ -127,7 +127,7 @@ class rekomenFragment : Fragment() {
             .load(lunch.image)
             .centerCrop()
             .placeholder(R.drawable.doge)
-            .into(binding.ivFood1);
+            .into(binding.ivFood2);
         binding.tvmakanan2.text=lunch.name
         binding.tvHarga2.text=lunch.price.toString()
         binding.tv2Kalori2.text=lunch.calories.toString()
