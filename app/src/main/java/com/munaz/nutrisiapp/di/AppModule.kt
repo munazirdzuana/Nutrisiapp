@@ -1,7 +1,7 @@
 package com.munaz.nutrisiapp.di
 
 import android.content.Context
-import com.munaz.nutrisiapp.data.local.dataStoreApp
+import com.munaz.nutrisiapp.data.local.DataStoreApp
 import com.munaz.nutrisiapp.utils.Jaringan
 import com.munaz.nutrisiapp.utils.NetworkConnectivity
 import dagger.Module
@@ -19,8 +19,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalRepository(@ApplicationContext context: Context): dataStoreApp {
-        return dataStoreApp(context)
+    fun provideLocalRepository(@ApplicationContext context: Context): DataStoreApp {
+        return DataStoreApp(context)
     }
 
     @Provides

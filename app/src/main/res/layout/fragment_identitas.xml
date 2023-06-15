@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:padding="16dp"
+    android:orientation="vertical"
     tools:context=".ui.isidata.IdentitasFragment">
 
     <LinearLayout
-        android:layout_width="320dp"
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             style="@style/medium"
@@ -22,64 +28,60 @@
 
         <TextView
             android:id="@+id/tvGender"
+            style="@style/regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/rounded"
-            android:drawableStart="@drawable/ic_person"
-            android:drawablePadding="8dp"
             android:hint="@string/weight"
-            android:minHeight="32dp"
-            android:padding="8dp"
             android:text="@string/gender"
             android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/type_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="16dp"
-                android:entries="@array/type_gender"
-                android:minHeight="48dp"
-                android:padding="8dp"
-                tools:listitem="@android:layout/simple_spinner_item" />
-
-        <TextView
-            android:id="@+id/selectDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded"
-            android:drawableStart="@drawable/ic_calendar"
-            android:drawablePadding="8dp"
-            android:minHeight="32dp"
-            android:padding="8dp"
-            android:text="@string/birthday"
-            android:textSize="18sp" />
-<!--            android:onClick="selectDate"-->
-
-        <Button
-            android:id="@+id/calcuAge"
-            android:text="@string/age"
-            android:textSize="15sp"
-            android:visibility="gone"
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:id="@+id/Jenis_Kelamin"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/showAge"
+            <RadioButton
+                android:id="@+id/radio_pria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:text="@string/pria" />
+
+            <RadioButton
+                android:id="@+id/radio_wanita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wanita" />
+        </RadioGroup>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded"
-            android:text="@string/age"
-            android:textSize="18sp"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="16dp"
-            android:paddingStart="10dp"
-            android:visibility="gone"
-            android:padding="8dp" />
+            android:layout_marginVertical="8dp"
+            android:textAlignment="inherit">
+
+
+            <EditText
+                android:id="@+id/editTextTanggalLahir"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/rounded"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="8dp"
+                android:focusable="false"
+                android:hint="Tanggal Lahir"
+                android:inputType="none"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/buttonPilihTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal" />
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etWeight"
@@ -113,21 +115,25 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end">
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
         <TextView
             android:id="@+id/next"
+            style="@style/medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            style="@style/medium"
-            android:textSize="16sp"
-            android:textColor="#212121"
-            android:padding="8dp"
-            android:drawablePadding="8dp"
-            android:drawableEnd="@drawable/ic_arrow_forward"
-            android:text="@string/next"
+            android:layout_marginEnd="12dp"
             android:clickable="true"
-            android:gravity="fill|right|bottom" />
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:text="@string/next"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            app:drawableEndCompat="@drawable/ic_arrow_forward"
+            android:focusable="true" />
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

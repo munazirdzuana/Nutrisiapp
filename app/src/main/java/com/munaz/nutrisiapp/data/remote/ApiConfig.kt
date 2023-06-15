@@ -1,15 +1,11 @@
 package com.munaz.nutrisiapp.data.remote
 
-import android.content.Context
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.viewbinding.BuildConfig
-import com.munaz.nutrisiapp.data.local.Tokenmodel
-import com.munaz.nutrisiapp.data.local.dataStoreApp
+import com.munaz.nutrisiapp.data.local.DataStoreApp
 import com.munaz.nutrisiapp.utils.BASE_URL
 import com.munaz.nutrisiapp.utils.BASE_URL2
-import kotlinx.coroutines.flow.Flow
+import com.munaz.nutrisiapp.utils.BASE_URL3
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -27,10 +23,12 @@ private const val contentTypeValue = "application/json"
 private const val timeoutConnect = 30   //In seconds
 
 @Singleton
-class ApiConfig @Inject constructor(dataStoreApp: dataStoreApp) {
+class ApiConfig @Inject constructor(dataStoreApp: DataStoreApp) {
     private val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
     private val retrofit: Retrofit
     private val retrofitImg: Retrofit
+    private val retrofitRecomendasi: Retrofit
+
 
     private var headerInterceptor = Interceptor { chain ->
         val original = chain.request()
@@ -63,6 +61,8 @@ class ApiConfig @Inject constructor(dataStoreApp: dataStoreApp) {
             .addConverterFactory(GsonConverterFactory.create()).build()
         retrofitImg = Retrofit.Builder().baseUrl(BASE_URL2).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
+        retrofitRecomendasi = Retrofit.Builder().baseUrl(BASE_URL3).client(client)
+            .addConverterFactory(GsonConverterFactory.create()).build()
     }
 
     private val logger: HttpLoggingInterceptor
@@ -79,6 +79,10 @@ class ApiConfig @Inject constructor(dataStoreApp: dataStoreApp) {
     }
     fun <S> createService2(serviceClass: Class<S>): S {
         return retrofitImg.create(serviceClass)
+    }
+
+    fun <S> createService3(serviceClass: Class<S>): S {
+        return retrofitRecomendasi.create(serviceClass)
     }
 
 }

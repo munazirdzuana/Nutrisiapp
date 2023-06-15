@@ -27,12 +27,6 @@ class SplasFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_splas, container, false)
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().popBackStack()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
         viewModel = ViewModelProvider(requireActivity())[VMss::class.java]
         viewModel.token.observe(viewLifecycleOwner, Observer {
             val token = runBlocking { it.first() }

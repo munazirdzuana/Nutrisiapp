@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.munaz.nutrisiapp.R
 import com.munaz.nutrisiapp.data.Resource
+import com.munaz.nutrisiapp.data.local.ModelPreferences
 import com.munaz.nutrisiapp.data.response.*
 import com.munaz.nutrisiapp.databinding.FragmentHomeBinding
 
@@ -37,6 +38,10 @@ class HomeFragment : Fragment() {
         viewModel.responfood.observe(viewLifecycleOwner, Observer {
             hadleFoodRecipe(it)
         })
+        viewModel.profile.observe(viewLifecycleOwner, Observer {
+            hadleProfile(it)
+        })
+        viewModel.getProfile()
         viewModel.getArtikel()
         viewModel.getFoodResep(1,15)
         Rvartikel = binding.rvArtikel
@@ -69,6 +74,21 @@ class HomeFragment : Fragment() {
             is Resource.Success -> {
                 it.data?.let {
                     showResepList(it.foods)
+                }
+            }
+            is Resource.DataError -> {
+                showResult()
+//                it.errorCode?.let { viewModel.showErrMessage(it) }
+            }
+        }
+    }
+
+    private fun hadleProfile(it: Resource<ModelPreferences>) {
+        when (it) {
+            is Resource.Loading -> showLoadingView()
+            is Resource.Success -> {
+                it.data?.let {
+                    binding.tNama.text=it.email
                 }
             }
             is Resource.DataError -> {

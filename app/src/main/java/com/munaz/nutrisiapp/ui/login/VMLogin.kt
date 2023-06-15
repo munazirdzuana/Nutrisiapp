@@ -1,13 +1,13 @@
 package com.munaz.nutrisiapp.ui.login
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.munaz.nutrisiapp.data.Resource
-import com.munaz.nutrisiapp.data.local.Tokenmodel
 import com.munaz.nutrisiapp.data.request.LoginReq
 import com.munaz.nutrisiapp.data.response.LoginResponse
 import com.munaz.nutrisiapp.error.CHECK_YOUR_FIELDS
@@ -59,6 +59,7 @@ class VMLogin @Inject constructor(
             _response.value?.data?.token.let { s ->
                 if (s != null) {
                     dataRepository.saveToken(s).collect {
+                        Log.d(TAG,"Token :"+it.toString())
                         _savetoken.value = it
                     }
                 }

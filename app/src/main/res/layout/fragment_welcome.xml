@@ -11,19 +11,18 @@
 
         <ImageView
             android:id="@+id/ivLogo"
-            android:layout_width="412dp"
+            android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="24dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/main_logo" />
+            android:src="@drawable/splas" />
 
         <TextView
             android:id="@+id/wel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:textAlignment="center"
             android:text="@string/wel"
             android:textSize="28sp"
@@ -34,7 +33,7 @@
             android:id="@+id/wel1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/wel1"
             android:textAlignment="center"
             android:textSize="14sp"
@@ -58,7 +57,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="49dp"
+            android:layout_marginBottom="24dp"
             android:padding="14dp"
             android:text="@string/registration"
             style="@style/semibold"

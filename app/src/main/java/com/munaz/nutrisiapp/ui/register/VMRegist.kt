@@ -65,6 +65,7 @@ class VMRegist @Inject constructor(
             _response.value?.data?.token.let { s ->
                 if (s != null) {
                     dataRepository.saveToken(s).collect {
+                        Log.d(TAG, "Token :$s")
                         _savetoken.value = it
                     }
                 }

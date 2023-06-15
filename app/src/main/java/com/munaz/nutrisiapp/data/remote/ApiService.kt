@@ -2,10 +2,14 @@ package com.munaz.nutrisiapp.data.remote
 
 import com.munaz.nutrisiapp.data.request.LoginReq
 import com.munaz.nutrisiapp.data.request.RegisReq
+import com.munaz.nutrisiapp.data.request.RekomendasiReq
 import com.munaz.nutrisiapp.data.response.*
 import okhttp3.MultipartBody
+import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
+
 
 interface ApiService {
     @POST("register")
@@ -20,7 +24,7 @@ interface ApiService {
         @Body loginReq: LoginReq
     ): Response<LoginResponse>
 
-//    @GET("user")
+    //    @GET("user")
 //    suspend fun user(
 //        @Body loginReq: LoginReq
 //    ): Response<LoginResponse>
@@ -40,4 +44,8 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): Response<ImageResponse>
 
+    @POST("foods-recommendation")
+    suspend fun getrecomend(
+        @Body req: RekomendasiReq
+    ): Response<RecomendasiResponseX>
 }

@@ -1,10 +1,14 @@
 package com.munaz.nutrisiapp.repo
 
+import android.content.ContentValues
+import android.util.Log
 import com.munaz.nutrisiapp.data.Resource
-import com.munaz.nutrisiapp.data.local.dataStoreApp
+import com.munaz.nutrisiapp.data.local.DataStoreApp
+import com.munaz.nutrisiapp.data.local.ModelPreferences
 import com.munaz.nutrisiapp.data.remote.RemoteData
 import com.munaz.nutrisiapp.data.request.LoginReq
 import com.munaz.nutrisiapp.data.request.RegisReq
+import com.munaz.nutrisiapp.data.request.RekomendasiReq
 import com.munaz.nutrisiapp.data.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,7 +19,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RepoImpl @Inject constructor(
     private val remoteRepository: RemoteData,
-    private val localRepository: dataStoreApp,
+    private val localRepository: DataStoreApp,
     private val ioDispatcher: CoroutineContext
 ) : Repo {
     override suspend fun doRegister(registReq: RegisReq): Flow<Resource<LoginResponse>> {
@@ -33,6 +37,18 @@ class RepoImpl @Inject constructor(
     override suspend fun saveToken(tokenmodel: String): Flow<Resource<Boolean>> {
         return flow {
             emit(localRepository.saveToken(tokenmodel))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun saveProfile(profile: ModelPreferences): Flow<Resource<Boolean>> {
+        return flow {
+            emit(localRepository.saveProfile(profile))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun getProfile(): Flow<Resource<ModelPreferences>> {
+        return flow {
+            emit(localRepository.getProfile())
         }.flowOn(ioDispatcher)
     }
 
@@ -57,6 +73,14 @@ class RepoImpl @Inject constructor(
     override suspend fun doPostImage(file: MultipartBody.Part):Flow<Resource<ImageResponse>> {
         return flow {
             emit(remoteRepository.postImage(file))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun doGetRecomendasi(
+        rekomendasiReq: RekomendasiReq
+    ): Flow<Resource<RecomendasiResponseX>> {
+        return flow {
+            emit(remoteRepository.getRecomendasi(rekomendasiReq))
         }.flowOn(ioDispatcher)
     }
 }

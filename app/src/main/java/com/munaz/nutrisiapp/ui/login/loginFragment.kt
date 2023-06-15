@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.munaz.nutrisiapp.R
 import com.munaz.nutrisiapp.data.Resource
-import com.munaz.nutrisiapp.data.local.Tokenmodel
 import com.munaz.nutrisiapp.data.request.LoginReq
 import com.munaz.nutrisiapp.data.response.LoginResponse
 import com.munaz.nutrisiapp.databinding.FragmentLoginBinding

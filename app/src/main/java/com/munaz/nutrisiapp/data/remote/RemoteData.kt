@@ -1,8 +1,11 @@
 package com.munaz.nutrisiapp.data.remote
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import com.munaz.nutrisiapp.data.Resource
 import com.munaz.nutrisiapp.data.request.LoginReq
 import com.munaz.nutrisiapp.data.request.RegisReq
+import com.munaz.nutrisiapp.data.request.RekomendasiReq
 import com.munaz.nutrisiapp.data.response.*
 import com.munaz.nutrisiapp.error.NETWORK_ERROR
 import com.munaz.nutrisiapp.error.NO_INTERNET_CONNECTION
@@ -36,8 +39,8 @@ class RemoteData @Inject constructor(
 
     override suspend fun register(regisReq: RegisReq): Resource<LoginResponse> {
         val recipesService = ApiConfig.createService(ApiService::class.java)
-        return when (val response = proses {recipesService.register(regisReq)}) {
-            is LoginResponse-> {
+        return when (val response = proses { recipesService.register(regisReq) }) {
+            is LoginResponse -> {
                 Resource.Success(data = response)
             }
             else -> {
@@ -48,8 +51,8 @@ class RemoteData @Inject constructor(
 
     override suspend fun login(loginReq: LoginReq): Resource<LoginResponse> {
         val recipesService = ApiConfig.createService(ApiService::class.java)
-        return when (val response = proses {recipesService.login(loginReq)}) {
-            is LoginResponse-> {
+        return when (val response = proses { recipesService.login(loginReq) }) {
+            is LoginResponse -> {
                 Resource.Success(data = response)
             }
             else -> {
@@ -60,8 +63,8 @@ class RemoteData @Inject constructor(
 
     override suspend fun listArikel(): Resource<ArtikelResponse> {
         val recipesService = ApiConfig.createService(ApiService::class.java)
-        return when (val response = proses {recipesService.artikelList()}) {
-            is ArtikelResponse-> {
+        return when (val response = proses { recipesService.artikelList() }) {
+            is ArtikelResponse -> {
                 Resource.Success(data = response)
             }
             else -> {
@@ -72,8 +75,8 @@ class RemoteData @Inject constructor(
 
     override suspend fun getFood(page: Int, limit: Int): Resource<ResepResponse> {
         val recipesService = ApiConfig.createService(ApiService::class.java)
-        return when (val response = proses {recipesService.resepList(page, limit)}) {
-            is ResepResponse-> {
+        return when (val response = proses { recipesService.resepList(page, limit) }) {
+            is ResepResponse -> {
                 Resource.Success(data = response)
             }
             else -> {
@@ -84,8 +87,24 @@ class RemoteData @Inject constructor(
 
     override suspend fun postImage(file: MultipartBody.Part): Resource<ImageResponse> {
         val recipesService = ApiConfig.createService2(ApiService::class.java)
-        return when (val response = proses {recipesService.image(file)}) {
-            is ImageResponse-> {
+        return when (val response = proses { recipesService.image(file) }) {
+            is ImageResponse -> {
+                Resource.Success(data = response)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    override suspend fun getRecomendasi(
+        rekomendasiReq: RekomendasiReq
+    ): Resource<RecomendasiResponseX> {
+        val recipesService = ApiConfig.createService3(ApiService::class.java)
+        return when (val response =
+            proses { recipesService.getrecomend(rekomendasiReq) }) {
+            is RecomendasiResponseX -> {
+                Log.d(TAG,"tes $response")
                 Resource.Success(data = response)
             }
             else -> {
@@ -100,7 +119,7 @@ class RemoteData @Inject constructor(
         }
         return try {
             val response = responseCall.invoke()
-            val responseCode = response.code()
+            val responseCode = response.errorBody()?.string()
             if (response.isSuccessful) {
                 response.body()
             } else {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -14,15 +15,16 @@ import com.munaz.nutrisiapp.data.Resource
 import com.munaz.nutrisiapp.data.request.RegisReq
 import com.munaz.nutrisiapp.data.response.LoginResponse
 import com.munaz.nutrisiapp.databinding.FragmentRegisterBinding
+import com.munaz.nutrisiapp.ui.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
 class RegisterFragment : Fragment() {
-    private var _binding :FragmentRegisterBinding? =null
-    private val binding get()=_binding!!
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var viewModel:VMRegist
+    private lateinit var viewModel: VMRegist
+    private lateinit var bundle: Bundle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,11 +44,12 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
         binding.creAkun.setOnClickListener {
-            val name =binding.eNama.text.toString()
-            val mail =binding.etEmail.text.toString()
-            val password =binding.etPassword.text.toString()
-            val rePassword =binding.rePassword.text.toString()
-            val data= RegisReq(name, mail, password, rePassword)
+            val name = binding.eNama.text.toString()
+            val mail = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val rePassword = binding.rePassword.text.toString()
+            val data = RegisReq(name, mail, password, rePassword)
+            bundle = bundleOf(EMAILL to mail, NAMEE to name)
             viewModel.doregis(data)
         }
         return binding.root
@@ -55,14 +58,15 @@ class RegisterFragment : Fragment() {
     private fun handleErr(it: String) {
         showResult()
         binding.err.visibility = View.VISIBLE
-        binding.err.text= it
+        binding.err.text = it
     }
 
     private fun showLoadingView() {
-        binding.progressBar.visibility=View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
     }
+
     private fun showResult() {
-        binding.progressBar.visibility=View.GONE
+        binding.progressBar.visibility = View.GONE
     }
 
     private fun handleResponse(status: Resource<LoginResponse>) {
@@ -70,7 +74,8 @@ class RegisterFragment : Fragment() {
             is Resource.Loading -> showLoadingView()
             is Resource.Success -> status.data?.let {
                 viewModel.doSaveToken()
-                showAlert(recipes = it) }
+                showAlert(recipes = it)
+            }
             is Resource.DataError -> {
                 status.errorCode?.let { viewModel.showErrMessage(it) }
             }
@@ -84,7 +89,7 @@ class RegisterFragment : Fragment() {
             setMessage(recipes.message)
             setPositiveButton("Lanjut") { dialog, _ ->
                 dialog.dismiss()
-                findNavController().navigate(R.id.action_registerFragment_to_identitasFragment)
+                findNavController().navigate(R.id.action_registerFragment_to_identitasFragment, bundle)
             }
             create()
             show()
@@ -94,10 +99,11 @@ class RegisterFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding=null
+        _binding = null
     }
 
     companion object {
-
+        const val EMAILL = "email"
+        const val NAMEE = "name"
     }
 }

@@ -70,6 +70,19 @@
     <string name="invalid_email_and_password">invalid Email and Password</string>
     <string name="detail_artikel">Detail Artikel</string>
     <string name="hi">Hi,</string>
+    <string name="wanita">Wanita</string>
+    <string name="pria">Pria</string>
+    <string name="protein">Protein :</string>
+    <string name="rekomendasi_makanan">Rekomendasi makanan</string>
+    <string name="generate_rekomendasi">Generate rekomendasi</string>
+    <string name="hasil_generate">Hasil generate</string>
+    <string name="snack_sore">Snack Sore</string>
+    <string name="snack_pagi">Snack Pagi</string>
+    <string name="makan_malam">Makan Malam</string>
+    <string name="makan_siang">Makan Siang</string>
+    <string name="kalori">Kalori :</string>
+    <string name="karbohidrat">Karbohidrat :</string>
+    <string name="fat">Fat :</string>
 
     <string-array name="type_gender">
         <item>Laki-laki</item>
@@ -77,12 +90,14 @@
     </string-array>
 
     <string-array name="type_allergy">
+        <item>-</item>
         <item>Kacang</item>
         <item>Udang</item>
         <item>Seafood</item>
     </string-array>
 
     <string-array name="type_disease">
+        <item>-</item>
         <item>Diabetes</item>
         <item>Hipertensión</item>'
         <item>Cáncer</item>
@@ -97,10 +112,10 @@
     </string-array>
 
     <string-array name="type_stress">
-        <item>Stres sangat berat</item>
-        <item>Stres berat</item>
-        <item>Stres sedang</item>
         <item>Stres ringan</item>
+        <item>Stres sedang</item>
+        <item>Stres berat</item>
+        <item>Stres sangat berat</item>
     </string-array>
 
     <string-array name="type_activity">

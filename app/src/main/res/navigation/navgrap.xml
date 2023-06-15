@@ -115,16 +115,7 @@
         android:label="fragment_identitas"
         tools:layout="@layout/fragment_identitas" >
         <action
-            android:id="@+id/action_identitasFragment_to_budgetFragment"
-            app:destination="@id/budgetFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/budgetFragment"
-        android:name="com.munaz.nutrisiapp.ui.isidata.BudgetFragment"
-        android:label="fragment_budget"
-        tools:layout="@layout/fragment_budget" >
-        <action
-            android:id="@+id/action_budgetFragment_to_riwayatFragment"
+            android:id="@+id/action_identitasFragment_to_riwayatFragment"
             app:destination="@id/riwayatFragment" />
     </fragment>
     <fragment
