@@ -47,7 +47,7 @@ class IdentitasFragment : Fragment() {
         val email =arguments?.getString(EMAILL) ?:""
         val sberat  = binding.etWeight.text.toString()
         val berat =sberat.toInt()
-        val stinggi =binding.etWeight.text.toString()
+        val stinggi =binding.etHeight.text.toString()
         val tinggi =stinggi.toInt()
         val jenisK=inputData()
         val umur = hitungUmur(lahir)

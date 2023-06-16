@@ -1,7 +1,5 @@
 package com.munaz.nutrisiapp.repo
 
-import android.content.ContentValues
-import android.util.Log
 import com.munaz.nutrisiapp.data.Resource
 import com.munaz.nutrisiapp.data.local.DataStoreApp
 import com.munaz.nutrisiapp.data.local.ModelPreferences
@@ -81,6 +79,12 @@ class RepoImpl @Inject constructor(
     ): Flow<Resource<RecomendasiResponseX>> {
         return flow {
             emit(remoteRepository.getRecomendasi(rekomendasiReq))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun doLogout(): Flow<Resource<Boolean>> {
+        return flow {
+            emit(localRepository.logout())
         }.flowOn(ioDispatcher)
     }
 }

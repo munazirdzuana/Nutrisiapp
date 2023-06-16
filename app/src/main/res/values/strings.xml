@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nutrisiapp</string>
+    <string name="app_name">Wellness Plate</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -83,6 +83,12 @@
     <string name="kalori">Kalori :</string>
     <string name="karbohidrat">Karbohidrat :</string>
     <string name="fat">Fat :</string>
+    <string name="aktivitas">Aktivitas</string>
+    <string name="tingkat_stres">Tingkat Stres</string>
+    <string name="riwayat_penyakit">Riwayat Penyakit</string>
+    <string name="tinggi_badan">Tinggi Badan</string>
+    <string name="berat_badan">Berat Badan</string>
+    <string name="alergi">Alergi</string>
 
     <string-array name="type_gender">
         <item>Laki-laki</item>

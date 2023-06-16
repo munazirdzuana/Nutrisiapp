@@ -57,7 +57,9 @@ class rekomenFragment : Fragment() {
         when (it) {
             is Resource.Loading -> showLoadingView()
             is Resource.Success -> {
-                it.data?.let { showReco(it) }
+                it.data?.let {
+                    showResult1()
+                    showReco(it) }
             }
             is Resource.DataError -> {
                 showResult()
@@ -67,6 +69,11 @@ class rekomenFragment : Fragment() {
 
     }
 
+    private fun showResult1() {
+        binding.sv.visibility=View.VISIBLE
+        binding.progressBar5.visibility=View.GONE
+    }
+
     private fun showReco(it: RecomendasiResponseX) {
         showPagi(it.datas[0].breakfast)
         showSiang(it.datas[1].lunch)
@@ -74,6 +81,7 @@ class rekomenFragment : Fragment() {
         showSnackPagi(it.datas[3].snackpagi)
         showsnackSore(it.datas[4].snacksiang)
         showResult()
+
     }
 
     private fun showsnackSore(snacksiang: Snacksiang) {
@@ -156,7 +164,6 @@ class rekomenFragment : Fragment() {
     }
     private fun showResult() {
         binding.progressBar5.visibility=View.GONE
-        binding.sv.visibility=View.VISIBLE
     }
 
 
@@ -167,7 +174,7 @@ class rekomenFragment : Fragment() {
                 it.data?.let {
                     showResult()
                     profile=it
-                    binding.tvName.text=it.email
+                    binding.tvName.text=it.name
                 }
             }
             is Resource.DataError -> {

@@ -39,19 +39,6 @@
             app:layout_constraintTop_toBottomOf="@id/makanan" />
 
         <TextView
-            android:id="@+id/tv_harga"
-            style="@style/regular"
-            android:layout_toEndOf="@id/tv_rp"
-            android:layout_below="@id/makanan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="20.000"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/tv_rp"
-            app:layout_constraintTop_toBottomOf="@+id/makanan" />
-
-        <TextView
             android:id="@+id/tv_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +49,7 @@
             android:ellipsize="end"
             android:maxLines="5"
             app:layout_constraintStart_toEndOf="@+id/imgmakan"
-            app:layout_constraintTop_toBottomOf="@+id/tv_harga"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rp"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="@string/rating" />
 

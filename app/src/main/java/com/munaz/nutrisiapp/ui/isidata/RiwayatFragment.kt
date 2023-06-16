@@ -69,7 +69,6 @@ class RiwayatFragment : Fragment() {
                     "                $selectedItemAct,\n" +
                     "                $selectedItemStr")
             viewModel.doSaveProfile(data)
-         Toast.makeText(requireContext(), data.name , Toast.LENGTH_SHORT).show()
         }
 
         viewModel.responProfile.observe(viewLifecycleOwner){
@@ -81,7 +80,7 @@ class RiwayatFragment : Fragment() {
     private fun handleResponse(it: Resource<Boolean>) {
         when (it) {
             is Resource.Success -> findNavController().navigate(R.id.action_riwayatFragment_to_homeFragment)
-            else -> { Toast.makeText(requireContext(), it.toString() , Toast.LENGTH_SHORT).show() }
+            else -> { }
         }
     }
 }

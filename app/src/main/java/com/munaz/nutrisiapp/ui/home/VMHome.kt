@@ -31,6 +31,9 @@ class VMHome @Inject constructor(
     private val _responRekomendasi = MutableLiveData<Resource<RecomendasiResponseX>>()
     val responseRekomendasi: LiveData<Resource<RecomendasiResponseX>> get() = _responRekomendasi
 
+    private val _logout = MutableLiveData<Resource<Boolean>>()
+    val logout: LiveData<Resource<Boolean>> get() = _logout
+
     private val _showErr = MutableLiveData<String>()
     val showErr: LiveData<String> get() = _showErr
 
@@ -64,13 +67,24 @@ class VMHome @Inject constructor(
         }
     }
 
-    fun getRecomendasi(rekomendasiReq: RekomendasiReq
+    fun getRecomendasi(
+        rekomendasiReq: RekomendasiReq
     ) {
         viewModelScope.launch {
             Log.d(ContentValues.TAG, "sampe vm : $rekomendasiReq")
             repo.doGetRecomendasi(rekomendasiReq).collect {
                 _responRekomendasi.value = it
             }
+        }
+    }
+
+    fun dologout() {
+        viewModelScope.launch {
+            _logout.value = Resource.Loading()
+            repo.doLogout().collect {
+                _logout.value = it
+            }
+
         }
     }
 

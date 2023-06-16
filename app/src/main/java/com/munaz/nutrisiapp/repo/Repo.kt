@@ -19,7 +19,6 @@ interface Repo {
     suspend fun doGetListArtikel(): Flow<Resource<ArtikelResponse>>
     suspend fun doGetFoodResep(page: Int, limit: Int): Flow<Resource<ResepResponse>>
     suspend fun doPostImage(file: MultipartBody.Part): Flow<Resource<ImageResponse>>
-    suspend fun doGetRecomendasi(
-        rekomendasiReq: RekomendasiReq
-    ): Flow<Resource<RecomendasiResponseX>>
+    suspend fun doGetRecomendasi( rekomendasiReq: RekomendasiReq): Flow<Resource<RecomendasiResponseX>>
+    suspend fun doLogout():Flow<Resource<Boolean>>
 }

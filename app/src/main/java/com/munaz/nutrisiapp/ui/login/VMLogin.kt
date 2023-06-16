@@ -36,7 +36,7 @@ class VMLogin @Inject constructor(
 
     fun doLogin(loginReq: LoginReq) {
         val isEmailValid = RegexEmail.isValidEmail(loginReq.email)
-        val isPassWordValid = loginReq.password.trim().length > 8
+        val isPassWordValid = loginReq.password.trim().length >= 8
         if (isEmailValid && !isPassWordValid) {
             _response.value = Resource.DataError(PASS_WORD_ERROR)
         } else if (!isEmailValid && isPassWordValid) {
@@ -73,6 +73,17 @@ class VMLogin @Inject constructor(
         val error = errorManager.getError(errorCode)
         Log.d(ContentValues.TAG, error.description)
         _showErr.value = error.description
+    }
+
+    private val _gtoken = MutableLiveData<Flow<String?>>()
+    val gtoken: LiveData<Flow<String?>> get() = _gtoken
+
+    fun doGetToken(){
+        viewModelScope.launch {
+            dataRepository.getToken().collect {
+                _gtoken.value=it
+            }
+        }
     }
 
 }

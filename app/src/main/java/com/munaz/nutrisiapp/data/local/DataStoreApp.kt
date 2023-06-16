@@ -1,7 +1,6 @@
 package com.munaz.nutrisiapp.data.local
 
 import android.content.Context
-import android.view.Display.Mode
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -40,10 +39,16 @@ class DataStoreApp(private val context: Context) {
         }
     }
 
-    suspend fun logout() {
-        context.dataToken.edit { preferences ->
-            preferences.clear()
+    suspend fun logout():Resource<Boolean> {
+        return try {
+            context.dataToken.edit { preferences ->
+                preferences.clear()
+            }
+            Resource.Success(true)
+        }catch (e: Exception) {
+            Resource.DataError(DEFAULT_ERROR)
         }
+
     }
 
     suspend fun saveProfile(user: ModelPreferences): Resource<Boolean> {

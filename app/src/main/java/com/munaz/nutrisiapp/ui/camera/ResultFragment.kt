@@ -23,7 +23,7 @@ class ResultFragment : Fragment() {
     ): View {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
         binding.backButton3.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_resultFragment_to_homeFragment)
         }
         binding.predict.text= arguments?.getString(HomeFragment.ARTIKEL) ?:""
         val img= arguments?.getString(HomeFragment.IMG) ?:""

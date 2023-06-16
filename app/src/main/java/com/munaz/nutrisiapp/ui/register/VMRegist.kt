@@ -36,7 +36,7 @@ class VMRegist @Inject constructor(
     fun doregis(regisReq: RegisReq) {
         val isEmailValid = isValidEmail(regisReq.email)
         val isPassWordValid =
-            regisReq.password.trim().length > 8 && regisReq.password == regisReq.passwordConfirm
+            regisReq.password.trim().length >= 8 && regisReq.password == regisReq.passwordConfirm
         if (isEmailValid && !isPassWordValid) {
             _response.value = Resource.DataError(PASS_WORD_ERROR)
         } else if (!isEmailValid && isPassWordValid) {

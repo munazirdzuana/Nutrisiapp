@@ -18,6 +18,7 @@ import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.munaz.nutrisiapp.R
 import com.munaz.nutrisiapp.data.Resource
@@ -30,7 +31,7 @@ import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
 import java.io.File
 
-class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
+class CameraFragment : Fragment(){
     private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
 
@@ -44,17 +45,10 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     ): View {
         _binding = FragmentCameraBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[VMcam::class.java]
-        permission()
-        if (!hasCamPermission()) {
-            Toast.makeText(
-                requireContext(),
-                "gagal bang!",
-                Toast.LENGTH_SHORT
-            ).show()
-            findNavController().popBackStack()
-        }
         viewModel.responScan.observe(viewLifecycleOwner) {
-            hadleScanCam(it)
+            if (getFile != null) {
+                hadleScanCam(it)
+            }
         }
         binding.backButton2.setOnClickListener { findNavController().popBackStack() }
         binding.btScan.setOnClickListener {
@@ -91,6 +85,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         return binding.root
     }
+
     private fun showLoadingView() {
         binding.progressBar4.visibility=View.VISIBLE
     }
@@ -106,7 +101,7 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     val img=it.data.imageUrl
                     val titel=it.data.predict
                     val bundle = bundleOf(HomeFragment.IMG to img, HomeFragment.ARTIKEL to titel)
-                    findNavController().navigate(R.id.action_cameraFragment_to_resultFragment, bundle)
+                    findNavController().navigate(R.id.action_cameraFragment_to_resultFragment, bundle,)
                 }
             }
             is Resource.DataError -> {
@@ -114,47 +109,6 @@ class CameraFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 Toast.makeText(requireContext(),"error network", Toast.LENGTH_LONG).show()
             }
         }
-    }
-
-    private fun hasCamPermission() =
-        EasyPermissions.hasPermissions(
-            requireContext(),
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA
-        )
-
-    private fun permission() {
-        EasyPermissions.requestPermissions(
-            this,
-            "This application cannot work without Location Permission.",
-            REQUEST_code,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA
-        )
-    }
-
-    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            SettingsDialog.Builder(requireActivity()).build().show()
-        } else {
-            permission()
-        }
-    }
-
-    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
-        Toast.makeText(
-            requireContext(),
-            "Permission Granted!",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
     private val launcherIntentCamera = registerForActivityResult(
